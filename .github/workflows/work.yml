@@ -24,10 +24,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t admiro/book:latest .
 
-      - name: Log in to PostgreSQL
-        run: docker login -u postgres -p 1234qwer.
-
-      - name: Run Docker container with PostgreSQL
+      - name: Run PostgreSQL container
         run: |
           docker run -d \
             --name postgres-container \
@@ -38,7 +35,7 @@ jobs:
             postgres:latest
 
       - name: Wait for PostgreSQL to start
-        run: sleep 15  # Aguarda 15 segundos para o PostgreSQL inicializar completamente
+        run: sleep 15
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
