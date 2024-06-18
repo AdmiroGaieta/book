@@ -1,0 +1,4 @@
+br\com\admirogaieta\deploy_ghactions\books\BooksRepository.class
+br\com\admirogaieta\deploy_ghactions\DeployGhactionsApplication.class
+br\com\admirogaieta\deploy_ghactions\books\Book.class
+br\com\admirogaieta\deploy_ghactions\books\BooksController.class
