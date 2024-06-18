@@ -21,6 +21,28 @@ jobs:
           username: admiro
           password: SUZANA100
 
+      - name: Build Docker image
+        run: docker build -t admiro/book:latest .
+
+      - name: Log in to PostgreSQL
+        uses: docker/login-action@v2
+        with:
+          username: postgres
+          password: 1234qwer.  # Senha do PostgreSQL local
+
+      - name: Run Docker container with PostgreSQL
+        run: |
+          docker run -d \
+            --name postgres-container \
+            -e POSTGRES_DB=book \
+            -e POSTGRES_USER=postgres \
+            -e POSTGRES_PASSWORD=1234qwer. \
+            -p 5432:5432 \
+            postgres:latest
+
+      - name: Wait for PostgreSQL to start
+        run: sleep 15  # Aguarda 15 segundos para o PostgreSQL inicializar completamente
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
