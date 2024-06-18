@@ -25,10 +25,7 @@ jobs:
         run: docker build -t admiro/book:latest .
 
       - name: Log in to PostgreSQL
-        uses: docker/login-action@v2
-        with:
-          username: postgres
-          password: 1234qwer.  # Senha do PostgreSQL local
+        run: docker login -u postgres -p 1234qwer.
 
       - name: Run Docker container with PostgreSQL
         run: |
